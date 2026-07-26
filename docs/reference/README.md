@@ -32,6 +32,21 @@ Every `bgColors`/`textColors` object must define these 14 keys (from SunCalc):
 - **`generateCircadianCSS(sunData)`** — builds the `circadian-animation` and `circadian-animation-invert` keyframes and injects a `<style id="circadian-styles">` into `<head>` (removing any prior one).
 - **`initCircadianAnimation()`** — calls `fetchSunData` then `generateCircadianCSS`.
 
+## TypeScript package API
+
+The package entry point (`src/index.ts`, built to `dist/`) exports:
+
+- `SUN_PHASES` and the `SunPhase`, `Coordinates`, `PhaseValues<T>`, and
+  `SolarState` types.
+- `getSolarTimeline(date, coordinates)` and `getSolarState(options)`.
+- `resolveCircadianValue(values, state, interpolate)` for arbitrary properties.
+- `interpolateColor(from, to, progress)` and
+  `interpolateGradient(from, to, progress)`.
+- `Circadian`, a configured sampler with `.state()`, `.value()`, `.color()`,
+  `.gradient()`, and `.configure()`.
+
+Install dependencies and verify the package with `npm test`.
+
 Generated classes:
 
 - `.circadian` — background/text animate through the palette across the 24-hour cycle.

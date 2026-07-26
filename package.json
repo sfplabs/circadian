@@ -1,0 +1,34 @@
+{
+  "name": "@sfplabs/circadian",
+  "version": "1.0.0",
+  "description": "Location-aware solar phase values, colors, and gradients",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "circadian.js"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepare": "npm run build",
+    "prepack": "npm run build"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "suncalc": "^2.0.1"
+  },
+  "devDependencies": {
+    "@types/suncalc": "^1.9.2",
+    "typescript": "^7.0.2"
+  }
+}
