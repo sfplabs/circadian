@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc",
     "test": "npm run build && node --test test/*.test.mjs",
+    "prepare": "npm run build",
     "prepack": "npm run build"
   },
   "license": "MIT",
