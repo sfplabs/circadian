@@ -51,6 +51,40 @@ Include SunCalc and Circadian from CDN, add the `.circadian` class, then instant
 
 To run the demo locally, serve the project directory with any static server (e.g. `python -m http.server`) and open `index.html`.
 
+## TypeScript package
+
+The package API separates solar calculations from the legacy CSS integration,
+so games and component libraries can bind any phase-keyed property:
+
+```bash
+npm install @sfplabs/circadian
+```
+
+```ts
+import { Circadian, type PhaseValues } from '@sfplabs/circadian'
+
+const sky = new Circadian({
+  coordinates: { lat: 45.5152, lon: -122.6784 },
+  transitionMode: 'continuous',
+})
+
+const gradients: PhaseValues<readonly string[]> = {
+  // Define a color-stop array for all 14 exported SUN_PHASES.
+}
+
+const currentGradient = sky.gradient(gradients)
+```
+
+Core methods:
+
+- `getSolarTimeline(date, coordinates)` — sorted SunCalc phase points.
+- `getSolarState(options)` — surrounding phases and normalized progress.
+- `resolveCircadianValue(values, state, interpolate)` — generic property binding.
+- `interpolateColor()` / `interpolateGradient()` — ready-made CSS color helpers.
+- `Circadian.color()` / `.gradient()` / `.value()` — configured reusable API.
+
+The original CDN script and `.circadian` CSS classes remain supported.
+
 ## Documentation
 
 - [docs/overview](docs/overview/README.md) — what Circadian is, why it exists, and core concepts (sun phases, keyframes).
